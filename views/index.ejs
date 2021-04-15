@@ -1,0 +1,47 @@
+<%- include("partials/header") -%>
+    <div class="d-flex justify-content-center mt-2">
+        <form class="d-flex" action="/" method="get">
+            <input type="text" name="search" id="search">
+            <input class="btn btn-primary" type="submit" value="Search" >
+        </form>
+    </div>
+    <br>
+    <div class="table-wrapper">
+        
+        <% if (nhanviens.length > 0) {%>
+            <table class="table table-hovered">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% nhanviens.forEach((player, index) => { %>
+                        <tr>
+                            <th scope="row"><%= player.id %></th>
+                            <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
+                            <td ><%= player.name %></td>
+                            <td><%= player.position %></td>
+                            <td><%= player.email %></td>
+                            <td><%= player.dob %></td>                          
+                            <td>
+                                <a href="/edit/<%= player.id %>" target="" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No nhanvien found. Go <a href="/add" >here</a> to add nhanvien.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<%- include("partials/header") -%>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (player) { %>
+        <form class="add-player-form" action="" method="post" enctype="multipart/form-data">            
+                <div class="form-group col-md-6">
+                    <label for="first-name"> Name</label>
+                    <input type="text" class="form-control" name="Name" id="Name" value="<%= player.name %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="first-name">Email</label>
+                    <input type="text" class="form-control" name="Email" id="Email" value="<%= player.email %>" required>
+                </div>                        
+                <div class="form-group col-md-6">
+                    <label for="number">Date</label>
+                    <input type="date" class="form-control" name="Date" id="Dob" placeholder="Ngày Sinh" value="<%= player.dob%>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Status">Position</label>
+                    <select id="Position" name="Position" class="form-control" required>                      
+                        <option>Giám Đốc</option>
+                        <option>Phó Giám Đốc</option>
+                        <option>Trưởng Phòng</option> 
+                        <option>Nhân Viên</option> 
+                    </select>
+                </div>            
+            <button type="submit" class="form-group btn btn-success col-md-6">Update Nhanvien</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Nhanvien Not Found. Go <a href="/add">here</a> to add nhanvien.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
